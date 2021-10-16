@@ -79,7 +79,7 @@ server.delete('/api/tasks/:category/:id', (req, res) => {
 })
 
 
-server.listen(8000, () => {
+server.listen(process.env.PORT || 8000, () => {
     console.log('Server is running')
 })
 
@@ -87,27 +87,3 @@ server.listen(8000, () => {
 
 
 
-// const getAllUsers = (name) => {
-//     try {
-//         return JSON.parse(fs.readFileSync(`./tasks/${name}.json`, 'utf8'))
-//     } catch (e) {
-//         return []
-//     }
-// }
-// server.delete('/api/users/:id', (req, res) => {
-//     const users = getAllUsers()
-//     const deletedUser = users.find(el => el.taskId === +req.params.id)
-//     const filteredUser = users.filter(el => el.taskId !== +req.params.id)
-//     fs.writeFileSync('users.json', JSON.stringify(filteredUser, null, 2))
-//     res.json(deletedUser)
-// })
-// server.post('/api/users', (req, res) => {
-//     const addUser = [...getAllUsers(), req.body]
-//     fs.writeFileSync('users.json', JSON.stringify(addUser, null, 2))
-//     res.json(addUser)
-// })
-// server.put('/api/users', (req, res) => {
-//     const updatedUser =  getAllUsers().map(el => el.id === +req.params.id ? {...el, ...req.body} : el)
-//     fs.writeFileSync('users.json', JSON.stringify(updatedUser, null, 2))
-//     res.json(updatedUser)
-// })
